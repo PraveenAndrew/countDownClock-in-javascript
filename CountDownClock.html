@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Count Down Clock in JS</title>
+       <style type="text/css">
+              body 
+              {
+                     background-color:aliceblue;
+              }
+              .container 
+              {
+                     position: absolute;
+                     top: 50%;
+                     left: 50%;
+                     transform: translateX(-50%) translateY(-50%);
+
+                     background-color:#011627;
+                     color:#c2e812;
+                     padding: 10px;
+                     text-align: center;
+                     border-radius: 10px;
+                     width: 800px;
+              }
+              .info 
+              {
+                font-family: monospace;
+                font-size: 70px;
+              }
+       </style>
+</head>
+<body>
+
+ <table class="container">
+        <tr class="info">
+               <td colspan="4">Christmas CountDown</td>
+        </tr>
+        <tr class="info">
+               <td id="days"></td>
+               <td id="hours"></td>
+               <td id="minutes"></td>
+               <td id="seconds"></td>
+        </tr>
+        <tr>
+               <td>days</td>
+               <td>hours</td>
+               <td>minutes</td>
+               <td>seconds</td>
+        </tr>
+ </table>
+ 
+ <pre>
+   <script type="text/javascript">
+     function countdown()
+     {
+       var  today = new Date();
+       var event = new Date(today.getFullYear(),11,25);
+
+        var timeDiff = event.getTime() - today.getTime();
+       //  document.writeln("Events Naal with MilliSeconds "+ timeDiff);
+        var s = Math.floor(timeDiff / 1000);
+       //  document.writeln("Events Seconds "+ s);
+        var m = Math.floor(s / 60);
+       //  document.writeln("Events Mintues "+ m);
+        var h = Math.floor(m / 60);
+       //  document.writeln("Events Hours   "+ h);
+        var d = Math.floor(h / 24);
+       //  document.writeln("Events Days    "+ d);
+
+        h %= 24;
+        m %= 60;
+        s %= 60;
+
+        h = (h < 10) ? '0' + h : h;
+        m = (m < 10) ? '0' + m : m;
+        s = (s < 10) ? '0' + s : s;
+
+       document.getElementById('days').innerHTML = d;
+       document.getElementById('hours').innerHTML = h;
+       document.getElementById('minutes').innerHTML = m;
+       document.getElementById('seconds').innerHTML = s;
+
+
+       setTimeout(countdown, 1000);
+
+     };
+     countdown();
+//      setInterval(countdown,1000);
+   </script>
+ </pre>
+
+
+</body>
+</html>
